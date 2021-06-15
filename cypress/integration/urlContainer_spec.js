@@ -1,5 +1,3 @@
-// When a user fills out and submits the form, the new shortened URL is rendered
-
 describe('UrlContainer', () => {
   beforeEach(() => {
     cy.interceptUrl()

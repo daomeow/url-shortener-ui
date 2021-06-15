@@ -1,11 +1,6 @@
-// When a user visits the page, they can view the page title and the existing shortened URLs
-// When a user visits the page, they can view the Form with the proper inputs
-// When a user fills out the form, the information is reflected in the input fields
-
 describe('UrlForm', () => {
   beforeEach(() => {
     cy.interceptUrl()
-    // cy.intercept('http://localhost:3001/api/v1/urls', {fixtures: 'url.json'})
     cy.visit('http://localhost:3000/')
   })
 
@@ -16,7 +11,7 @@ describe('UrlForm', () => {
       .get('a').should('have.text', 'http://localhost:3001/useshorturl/1')
       .get('p').should('have.text', 'https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
   });
-  it.only('should render the form with the proper inputs', () => {
+  it('should render the form with the proper inputs', () => {
     cy.get('input').should('have.length', 2)
       .invoke('attr', 'placeholder').should('contain','Title...')
   });
