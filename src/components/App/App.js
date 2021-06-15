@@ -24,7 +24,9 @@ export class App extends Component {
 
   submitUrl = (newUrl) => {
     postUrls(newUrl)
-      .then(result => this.state({ urls: [...this.state.urls, result] }))
+      .then(result => 
+        // console.log(result)
+        this.setState({urls: [...this.state.urls, result]}))
       .catch(() => this.setState({ error: 'Please fill out the form before submitting'}))
   }
 
@@ -44,3 +46,5 @@ export class App extends Component {
 }
 
 export default App;
+
+//what putting in state/how it's being render >> whoel result >> Render ready for that objecT? 
