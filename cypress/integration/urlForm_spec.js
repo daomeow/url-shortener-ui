@@ -16,7 +16,13 @@ describe('UrlForm', () => {
       .get('a').should('have.text', 'http://localhost:3001/useshorturl/1')
       .get('p').should('have.text', 'https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
   });
-  it.only('should render the form with the proper inputs', () => {
+  it('should render the form with the proper inputs', () => {
     cy.get('input').invoke('attr', 'placeholder').should('contain','Title...')
   });
+
+  it('should have the form inputs reflect what is being typed', () => {
+    cy.get('.title-input').type('YOU CAN DO THIS MEL')
+    cy.get('.url-input').type('https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80')
+    cy.get('button').click()
+  })
 })
