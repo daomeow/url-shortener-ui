@@ -23,7 +23,7 @@ export class App extends Component {
   }
 
   submitUrl = (newUrl) => {
-    postUrls()
+    postUrls(newUrl)
       .then(result => this.state({ urls: [...this.state.urls, result] }))
       .catch(() => this.setState({ error: 'Please fill out the form before submitting'}))
   }
@@ -33,7 +33,7 @@ export class App extends Component {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm submitUrl={this.submitUrl}/>
         </header>
         {this.state.urls.length && !this.state.error && 
           <UrlContainer urls={this.state.urls}/>
