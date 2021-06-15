@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, postUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -20,6 +20,12 @@ export class App extends Component {
         this.setState({urls : data.urls})
       })
     .catch(() => this.setState({ error: 'Something went wrong'}))
+  }
+
+  submitUrl = (newUrl) => {
+    postUrls()
+      .then(result => this.state({ urls: [...this.state.urls, result] }))
+      .catch(() => this.setState({ error: 'Please fill out the form before submitting'}))
   }
 
   render() {
