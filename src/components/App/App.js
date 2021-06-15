@@ -16,8 +16,8 @@ export class App extends Component {
   componentDidMount() {
     getUrls()
       .then(data => {
-        console.log(data)
-        this.setState({urls : data})
+        // console.log(data.urls)
+        this.setState({urls : data.urls})
       })
     .catch(() => this.setState({ error: 'Something went wrong'}))
   }
